@@ -1,0 +1,120 @@
+# Prompt Esqueleto: Mídia Kit Premium para Piloto de Automobilismo
+
+Use o prompt abaixo em um assistente de IA para recriar exatamente o mesmo layout, comportamento interativo e lógica de animação para outro piloto. Substitua os campos demarcados entre colchetes `[como este]` pelos dados do novo piloto.
+
+---
+
+```markdown
+Crie um website Mídia Kit premium para captação de patrocínio corporativo do piloto de automobilismo [NOME DO PILOTO]. O site deve ser desenvolvido em uma única página estática utilizando HTML5 semântico, CSS3 personalizado (sem frameworks como Tailwind, a menos que solicitado) e JavaScript puro com GSAP para animações de scroll avançadas.
+
+## 🎨 Sistema de Design e Estética
+1. **Paleta de Cores**:
+   - Fundo principal: Escuro absoluto (`#050505`).
+   - Superfície de cards: Gradiente escuro sutil (`#14141a` para `#050507`).
+   - Cor de Destaque 1 (Primária/Roxo): `[COR ROXO EX: #7C3AED]` (usada para botões primários, bordas ativas e progresso).
+   - Cor de Destaque 2 (Secundária/Verde Limão): `[COR VERDE EX: #39FF14]` (usada para acentos high-tech, texto secundário e estados ativos).
+   - Menu Scrolled: Degradê de transição suave nas bordas. Quando o menu fixar ao rolar, as pontas esquerda e direita (10% das extremidades) devem possuir um degradê de roxo e magenta, enquanto o centro (80%) deve ser dominado por tons de ciano/teal (`#008BB8` e `#00C7C7`).
+2. **Tipografia**: Use fontes modernas do Google Fonts carregadas no header:
+   - Títulos e Logos: 'Bebas Neue', sans-serif (com caixa alta, visual agressivo de corrida).
+   - Corpo do Texto: 'Space Grotesk', sans-serif (visual geométrico tecnológico).
+   - Dados/Telemetria: 'DM Mono', monospace (estilo painel de carro).
+3. **Cortes Angulares (Sci-fi Aesthetic)**: Use CSS `clip-path` com polígonos para criar bordas cortadas chanfradas nos botões e caixas de imagem:
+   - Pequeno (`--cut-sm`): `polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))`
+   - Médio (`--cut-md`): `polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))`
+
+---
+
+## 🏛️ Estrutura de Seções (HTML)
+1. **Header Navigation**: Menu fixo no topo com logo (`[NOME] [SOBRENOME] //`), botão toggle para menu mobile em telas menores, e links de âncora (`#sobre`, `#trajetoria`, `#estatisticas`, `#patrocinio`, `#galeria`, `#blog`, `#contato`).
+2. **Hero Section (`#hero`)**: 
+   - Elemento `<div class="hero-sticky">` com altura `100vh` dentro de um contêiner de rolagem de `300vh`.
+   - Um elemento `<video id="helmet-video" playsinline muted preload="auto">` contendo o vídeo cinematográfico do piloto [Caminho do Vídeo: assets/felipe_banner.mp4].
+   - Um overlay escuro (`.hero-dark-overlay`) que aumenta de opacidade conforme o scroll avança.
+   - Textos do Hero (`.hero-content`): Título com o nome do piloto, subtítulo da categoria atual [EX: FÓRMULA 1600], e um botão de CTA para rolar para a biografia.
+   - Um indicador de rolagem piscante: "ROLE PARA BAIXO ↓".
+3. **Linha do Tempo de Títulos (`#trajetoria`)**:
+   - Um contêiner `<section id="trajetoria">` com altura de scroll de `300vh`, mantendo o conteúdo fixo em `100vh` (`.trajectory-sticky`).
+   - Um vídeo de fundo rodando continuamente em loop e autoplay (`assets/banner_timeline.mp4`).
+   - Um contêiner horizontal contendo os títulos históricos organizados do mais recente para o mais antigo.
+   - Cada nó (`.timeline-node`) deve exibir o ano, o título/conquista, uma foto em proporção quadrada perfeita (`aspect-ratio: 1/1`) com borda chanfrada, e uma breve descrição da conquista.
+   - Uma linha de progresso (`.timeline-track-progress`) e pontos de parada circular (`.timeline-dot`) que acendem à medida que o usuário rola a tela.
+4. **Sobre o Piloto (`#sobre`)**:
+   - Grid de duas colunas:
+     - Coluna da Esquerda: Imagem vertical do piloto com proporção `aspect-ratio: 4/5` e uma grade de pilares de performance (ex: Disciplina, Evolução, Foco, Resultados).
+     - Coluna da Direita: Texto detalhado contando a biografia, a rotina de treinos reais e virtuais, e os objetivos de carreira de [NOME DO PILOTO].
+5. **Estatísticas / Live Data (`#estatisticas`)**:
+   - Grid de estatísticas numéricas (ex: vitórias, pódios, velocidade máxima). Cada card possui o número iniciando em 0 e um atributo `data-target` contendo o valor final.
+6. **Por que Patrocinar (`#patrocinio` + Cotas)**:
+   - Seção destacando os benefícios comerciais para as empresas (ex: exposição de marca, networking, hospitalidade nos boxes).
+   - Cards de Cotas de Patrocínio (Cota Bronze, Cota Prata, Cota Black/Master) detalhando os benefícios de cada tier e CTAs para contato.
+7. **Galeria de Fotos (`#galeria`)**:
+   - Botões de filtro de categorias (Todos, Pista, Box).
+   - Grade de imagens que aplicam zoom ao passar o mouse e abrem em um Lightbox interativo de tela cheia ao clicar.
+8. **Blog & Mídia (`#blog`)**:
+   - Cards de matérias de imprensa, transmissões ao vivo ou artigos técnicos com data, badge e links externos (ex: matérias na TV ou portais de notícias).
+9. **Contato Comercial (`#contato`)**:
+   - Coluna de informações com canais diretos (WhatsApp, E-mail, Base de Operações).
+   - Formulário de contato funcional (mockup) que exibe mensagem de sucesso animada após o envio.
+10. **Footer**:
+    - Logo estilizado, slogan de corrida, links rápidos e ícones de redes sociais.
+
+---
+
+## ⚙️ Lógica de Script (JavaScript)
+
+1. **Scroll Restaurador**: Force o reset de scroll para o topo ao carregar a página:
+   ```javascript
+   if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
+   window.scrollTo(0, 0);
+   ```
+
+2. **GSAP Scroll-Synced Hero Video**:
+   - Sincronize a reprodução do vídeo do Hero (`#helmet-video`) com o scroll do mouse na seção `#hero` usando `ScrollTrigger`.
+   - O vídeo deve começar no tempo `0` e avançar de forma síncrona até o final de sua duração na primeira metade do scroll.
+   - Na segunda metade do scroll, aumente a opacidade de `.hero-dark-overlay` (até ~0.7) e revele os textos (`.hero-eyebrow`, `.hero-name`, `.hero-tagline`, e `.hero-cta`) com efeitos de fade-in e subida (`y: 0`).
+
+3. **GSAP Horizontal Timeline**:
+   - A seção da linha do tempo `#trajetoria` deve prender na tela (`pin`).
+   - Enquanto fixada, o contêiner `.timeline-wrapper` deve se deslocar horizontalmente de `0` até `-(timelineWrapper.scrollWidth - timelineContainer.clientWidth)` usando GSAP.
+   - Sincronize a largura da barra de progresso (`.timeline-track-progress`) de `0%` a `100%`.
+   - Adicione callbacks para atualizar os pontos (`.timeline-dot`):
+     - O ponto correspondente à próxima conquista futura deve piscar suavemente adicionando a classe `.next-stop`.
+     - Ao passar pelo scroll daquela conquista, remova o pulso e acenda o ponto permanentemente na cor verde limão com glow. Ao voltar o scroll, retorne o estado original.
+
+4. **Menu Dinâmico (Scrolled)**:
+   - Adicione a classe `.scrolled` ao `#mainNav` apenas após o scroll passar pela seção Hero.
+   - Destaque o link ativo no menu baseado na seção visível no momento (usando `IntersectionObserver` ou checagem de posição `scrollY`), ignorando o destaque enquanto o usuário estiver dentro da animação do Hero.
+
+5. **Contador de Estatísticas (Count-Up)**:
+   - Use `IntersectionObserver` para detectar quando a seção `#estatisticas` está visível.
+   - Faça um contador animado que incrementa os números dos cards de `0` até o valor de `data-target` em 2 segundos. Trate sufixos especiais (ex: "+" ou " km/h") e prefixo "#" para o número do piloto.
+
+6. **Filtro de Galeria e Lightbox**:
+   - O clique nos botões de filtro deve mostrar/ocultar as imagens da galeria aplicando transição suave.
+   - O clique em qualquer imagem da galeria deve abrir o overlay `#lightbox`, exibindo a imagem ampliada. O lightbox fecha ao clicar no botão fechar ou fora da imagem.
+
+7. **Scroll Reveal Geral**:
+   - Adicione a classe `.active` aos elementos com a classe `.scroll-reveal` à medida que entram no viewport para animar sua entrada.
+
+---
+
+## 🛠️ Especificação de Vídeos para o Desenvolvedor
+1. **Vídeo do Hero (Scroll Sync)**: O arquivo de vídeo usado para sincronização de scroll (`assets/felipe_banner.mp4`) DEVE ser otimizado via FFmpeg com distância de keyframes fixa igual a 1 (GOP=1, todos os quadros são I-frames) e sem faixa de áudio para garantir rolagem suave sem travamentos ou delays em qualquer navegador.
+   - Comando recomendado para conversão:
+     `ffmpeg -i [video_original.mp4] -an -g 1 -keyint_min 1 -x264opts keyint=1 -c:v libx264 -pix_fmt yuv420p assets/[novo_nome].mp4`
+2. **Vídeo da Timeline**: O vídeo de fundo da trajetória deve rodar livremente (`autoplay loop muted playsinline`) sem seeks manuais para evitar gargalos na GPU.
+```
+
+---
+
+**[DADOS DO PILOTO PARA SUBSTITUIÇÃO]**
+Abaixo estão os dados de referência para você preencher nos campos indicados acima:
+- **Nome**: [Nome Completo do Piloto]
+- **Handle/Número**: [Ex: #17 / @nome_piloto]
+- **Categoria**: [Ex: Fórmula 1600 / Copa Truck]
+- **Títulos**: [Lista de conquistas com ano e imagem correspondente]
+- **Cores**: [Códigos hexadecimais para Roxo e Verde Limão preferidos]
+- **Vídeo do Hero**: [Caminho do arquivo de vídeo editado do piloto]
+- **Vídeo de Fundo da Timeline**: [Caminho do arquivo de vídeo de ação do piloto]
+- **Fotos**: [Caminhos das imagens de conquistas e galeria]
+- **Biografia**: [Textos para a seção sobre e pilares de foco]

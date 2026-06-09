@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kauê Baroudi // Piloto Profissional de Automobilismo</title>
+    <meta name="description" content="Site oficial de Kauê Baroudi, piloto da AMG Cup Brasil. Conheça sua trajetória, estatísticas e oportunidades de patrocínio.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header id="mainNav">
+        <div class="nav-container">
+            <a href="#" class="logo">KAUÊ BAROUDI <span class="accent-slash">//</span> <span class="car-number">#18</span></a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#trajetoria" class="nav-link">Trajetória</a></li>
+                    <li><a href="#estatisticas" class="nav-link">Estatísticas</a></li>
+                    <li><a href="#patrocinio" class="nav-link">Patrocínio</a></li>
+                    <li><a href="#galeria" class="nav-link">Galeria</a></li>
+                    <li><a href="#blog" class="nav-link">Mídia</a></li>
+                    <li><a href="#contato" class="nav-link btn-nav-cta">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-scroll-container">
+        <div class="hero-sticky">
+            <!-- Fixed background helmet video -->
+            <video id="helmet-video" playsinline muted preload="auto">
+                <source src="assets/banner_hero_desktop.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+            
+            <!-- Dark Overlay that fades in on scroll -->
+            <div class="hero-dark-overlay"></div>
+            
+            <!-- Watermark Cover to mask Gemini icon in bottom-right corner -->
+            <div class="hero-watermark-cover"></div>
+            
+            <div class="hero-content">
+                <span class="hero-eyebrow">MERCEDES AMG CUP BRASIL</span>
+                <h1 class="hero-name">KAUÊ BAROUDI</h1>
+                <p class="hero-tagline">Da Fórmula Vee ao Topo da AMG Cup. Campeão C300 em 2024, desafiando novos limites na categoria A45 Pro em 2025.</p>
+                <div class="hero-actions">
+                    <a href="#sobre" class="btn btn-primary">Conheça a História</a>
+                    <a href="#patrocinio" class="btn btn-outline">Seja um Patrocinador</a>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span class="scroll-text">ROLE PARA BAIXO</span>
+                <span class="scroll-arrow">↓</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner 2 Section -->
+    <section id="banner2" class="banner2-scroll-container">
+        <div class="banner2-sticky">
+            <video id="banner2-video" playsinline muted preload="auto">
+                <source src="assets/banner_2.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+            <div class="hero-dark-overlay" style="opacity: 0.75; z-index: 2;"></div>
+            <div class="hero-watermark-cover"></div>
+            <div class="scroll-indicator">
+                <span class="scroll-text">CONTINUE ROLANDO</span>
+                <span class="scroll-arrow">↓</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main site content revealed below the sticky hero -->
+    <div class="hero-content-reveal" id="inicio">
+
+    <!-- Sobre o Piloto -->
+    <section id="sobre" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">SOBRE O PILOTO</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-image-column scroll-reveal">
+                    <div class="about-img-wrapper">
+                        <video id="about-card-video" playsinline muted loop preload="auto" class="about-img">
+                            <source src="assets/card.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeos HTML5.
+                        </video>
+                    </div>
+                    
+                    <!-- Performance Pillars Grid -->
+                    <div class="pillars-grid">
+                        <div class="pillar-card">
+                            <div class="pillar-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                            <h4 class="pillar-title">Consistência</h4>
+                            <p class="pillar-desc">Ritmo implacável em todas as voltas.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <div class="pillar-icon"><i class="fa-solid fa-bullseye"></i></div>
+                            <h4 class="pillar-title">Foco</h4>
+                            <p class="pillar-desc">Concentração absoluta sob pressão.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <div class="pillar-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                            <h4 class="pillar-title">Evolução</h4>
+                            <p class="pillar-desc">Adaptação contínua e treino mental/físico.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <div class="pillar-icon"><i class="fa-solid fa-trophy"></i></div>
+                            <h4 class="pillar-title">Resultados</h4>
+                            <p class="pillar-desc">7 vitórias e 12 pódios em uma única temporada.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-text-column scroll-reveal">
+                    <h3 class="about-subtitle">UMA NOVA GERAÇÃO DA FAMÍLIA BAROUDI NAS PISTAS</h3>
+                    <p class="about-paragraph">A paixão de Kauê Baroudi pela velocidade não surgiu por acaso. Desde a infância, ele acompanhava de perto o pai, Fernando Baroudi, nas competições de moto e kart. O ambiente do paddock, o cheiro de pneu queimado e o ronco dos motores moldaram a sua determinação. Fernando não era apenas um pai, mas a sua maior inspiração e o mentor que o impulsionou para o grid.</p>
+                    
+                    <p class="about-paragraph">Kauê iniciou sua jornada competitiva de forma brilhante. Em 2021, na Fórmula Vee Júnior — uma das mais tradicionais categorias escola do automobilismo nacional —, ele dominou a temporada e sagrou-se <strong>Campeão</strong>, além de conquistar o 3º lugar geral no Campeonato Paulista. Era a prova de que o talento estava no sangue e na técnica apurada.</p>
+                    
+                    <p class="about-paragraph">A transição para os carros de turismo foi rápida e impressionante. Ao estrear na AMG Cup Brasil em 2023, dividindo o cockpit do Mercedes-Benz C300 com seu pai Fernando, a dupla conquistou a 3ª colocação geral. No ano seguinte, em 2024, Kauê atingiu o topo ao conquistar o título de **Campeão Geral da C300**, acumulando números extraordinários: 7 vitórias, 12 pódios e 6 poles.</p>
+                    
+                    <p class="about-paragraph">Atualmente, Kauê Baroudi estuda no prestigiado <strong>Instituto Mauá de Tecnologia</strong>, aliando o conhecimento de engenharia com a precisão da telemetria nas pistas. Em 2025, o piloto deu o seu passo mais audacioso, migrando para a categoria <strong>AMG A45 Pro</strong> da AMG Cup Brasil, pilotando carros mais rápidos e competindo com os melhores pilotos do país.</p>
+
+                    <div class="signature-block">
+                        <span class="sig-name">Kauê Baroudi</span>
+                        <span class="sig-title">Piloto AMG Cup Brasil #18</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linha do Tempo de Títulos -->
+    <section id="trajetoria" class="timeline-scroll-container">
+        <div class="trajectory-sticky">
+            <!-- Fixed background timeline video -->
+            <video id="trajectory-video" playsinline muted preload="auto">
+                <source src="assets/tec.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+            <div class="hero-dark-overlay" style="opacity: 0.75; z-index: 2;"></div>
+            <div class="timeline-header-container">
+                <h2 class="section-title text-center">TRAJETÓRIA E CONQUISTAS</h2>
+                <p class="section-subtitle">Do aprendizado na Fórmula Vee ao topo do pódio da Mercedes AMG Cup</p>
+            </div>
+            
+            <div class="timeline-container">
+                <!-- Navigation Line -->
+                <div class="timeline-track">
+                    <div class="timeline-track-progress"></div>
+                </div>
+                
+                <div class="timeline-wrapper">
+                    
+                    <!-- 2025 Node -->
+                    <div class="timeline-node" data-index="0">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-year">2025 / Atual</span>
+                            <h3 class="timeline-title">Migração para AMG A45 Pro</h3>
+                            <div class="timeline-image-wrapper">
+                                <img src="assets/galeria_2.png" alt="AMG A45 Pro" class="timeline-image">
+                            </div>
+                            <p class="timeline-desc">Promoção para a categoria principal da AMG Cup Brasil. Pilotando a máquina Mercedes A45 AMG Pro de alta performance contra os maiores nomes do turismo nacional.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2024 Node -->
+                    <div class="timeline-node" data-index="1">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-year">2024</span>
+                            <h3 class="timeline-title">Campeão AMG Cup C300</h3>
+                            <div class="timeline-image-wrapper">
+                                <img src="assets/galeria_4.png" alt="Campeão C300" class="timeline-image">
+                            </div>
+                            <p class="timeline-desc">Temporada histórica e dominante com 331 pontos. Conquistou 7 vitórias, 12 pódios, 6 pole positions e 7 voltas mais rápidas em 16 corridas disputadas.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2023 Node -->
+                    <div class="timeline-node" data-index="2">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-year">2023</span>
+                            <h3 class="timeline-title">Estreia na AMG Cup Brasil</h3>
+                            <div class="timeline-image-wrapper">
+                                <img src="assets/galeria_6.png" alt="Estreia AMG Cup" class="timeline-image">
+                            </div>
+                            <p class="timeline-desc">Subiu para os carros de turismo da Mercedes AMG Cup C300. Terminou o campeonato de estreia na impressionante 3ª colocação geral, correndo em dupla com seu pai Fernando Baroudi.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2021 Node -->
+                    <div class="timeline-node" data-index="3">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-year">2021</span>
+                            <h3 class="timeline-title">Campeão Fórmula Vee Júnior</h3>
+                            <div class="timeline-image-wrapper">
+                                <img src="assets/kaue_portrait.png" alt="Campeão Fórmula Vee Júnior" class="timeline-image">
+                            </div>
+                            <p class="timeline-desc">Primeiro título relevante em monopostos. Campeão da Fórmula Vee Júnior e 3º colocado geral no Campeonato Paulista de Fórmula Vee, com 7 pódios e 1 pole position.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estatísticas / Live Data -->
+    <section id="estatisticas" class="section-padding stat-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">MÉTRICAS DE PERFORMANCE</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon"><i class="fa-solid fa-flag-checkered"></i></div>
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="30">0</span>
+                    </div>
+                    <h4 class="stat-title">Corridas</h4>
+                    <p class="stat-desc">Participações em categorias nacionais</p>
+                </div>
+                
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon"><i class="fa-solid fa-trophy text-accent-green"></i></div>
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="8">0</span>
+                    </div>
+                    <h4 class="stat-title">Vitórias</h4>
+                    <p class="stat-desc">Fórmula Vee e AMG Cup C300</p>
+                </div>
+                
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="19">0</span>
+                    </div>
+                    <h4 class="stat-title">Pódios</h4>
+                    <p class="stat-desc">Presenças consistentes no top 3</p>
+                </div>
+                
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="7">0</span>
+                    </div>
+                    <h4 class="stat-title">Pole Positions</h4>
+                    <p class="stat-desc">Voltas mais rápidas nas classificações</p>
+                </div>
+                
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon"><i class="fa-solid fa-gauge"></i></div>
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="8">0</span>
+                    </div>
+                    <h4 class="stat-title">Voltas Mais Rápidas</h4>
+                    <p class="stat-desc">Marcadas durante as corridas</p>
+                </div>
+
+                <div class="stat-card scroll-reveal car-card">
+                    <div class="stat-icon"><i class="fa-solid fa-car-side"></i></div>
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number-prefix">#</span><span class="stat-number" data-target="18">0</span>
+                    </div>
+                    <h4 class="stat-title">Número do Carro</h4>
+                    <p class="stat-desc">Identidade nas pistas nacionais</p>
+                </div>
+            </div>
+            
+            <div class="telemetry-box scroll-reveal">
+                <div class="telemetry-header">
+                    <div class="dot-green"></div>
+                    <span>TELEMETRIA LIVE DATA // ESTUDANTE MAUÁ DE TECNOLOGIA</span>
+                </div>
+                <div class="telemetry-body">
+                    <div class="telemetry-col">
+                        <p>STATUS: <span class="text-green">ONLINE</span></p>
+                        <p>CATEGORIA: <span class="text-cyan">AMG A45 PRO (2025)</span></p>
+                        <p>PARCEIRO: <span class="text-white">FERNANDO BAROUDI</span></p>
+                    </div>
+                    <div class="telemetry-col">
+                        <p>PESO DO CARRO: <span class="text-white">1420 KG</span></p>
+                        <p>POTÊNCIA A45: <span class="text-white">380 HP</span></p>
+                        <p>VELOCIDADE MÁX: <span class="text-accent-green">245 KM/H</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por que Patrocinar -->
+    <section id="patrocinio" class="section-padding">
+        <!-- Background video -->
+        <video id="patrocinio-video" playsinline muted preload="auto">
+            <source src="assets/patrocinio.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        <div class="hero-dark-overlay" style="opacity: 0.8; z-index: 2;"></div>
+        
+        <div class="container" style="position: relative; z-index: 3;">
+            <div class="section-header">
+                <h2 class="section-title">PROJETO DE PATROCÍNIO 2025/2026</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="sponsor-intro scroll-reveal">
+                <h3 class="sponsor-headline">O QUE UMA MARCA GANHA AO PATROCINAR KAUÊ BAROUDI?</h3>
+                <p class="sponsor-text">Apoiar um piloto não é apenas estampar uma marca no carro. É associar sua empresa aos valores de **performance extrema, precisão tecnológica, consistência e inovação**. Kauê Baroudi oferece uma plataforma robusta de marketing esportivo, com alta exposição em campeonatos de transmissão nacional, ativação digital e hospitalidade corporativa exclusiva nos boxes Mercedes AMG.</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fa-solid fa-tv"></i></div>
+                        <h4>Exposição de Marca</h4>
+                        <p>Logotipos em localizações premium no carro, macacão, capacete e mídias de transmissão (BandSports e YouTube).</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fa-solid fa-users"></i></div>
+                        <h4>Networking e Eventos</h4>
+                        <p>Acesso exclusivo ao grid de largada, credenciamento VIP e relacionamento corporativo direto nas etapas.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fa-solid fa-share-nodes"></i></div>
+                        <h4>Conteúdo Digital</h4>
+                        <p>Produção de vídeos onboards, vlogs de corrida e postagens patrocinadas em mídias de grande engajamento.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fa-solid fa-handshake"></i></div>
+                        <h4>Hospitalidade de Boxes</h4>
+                        <p>Espaço VIP para levar clientes e parceiros estratégicos para viver a experiência dos boxes da Mercedes-Benz AMG.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="cotas-title text-center scroll-reveal">COTAS DE PATROCÍNIO DISPONÍVEIS</h3>
+            
+            <div class="cotas-grid">
+                <!-- Bronze Cota -->
+                <div class="cota-card bronze scroll-reveal">
+                    <div class="cota-badge">Bronze</div>
+                    <h4 class="cota-name">Apoio de Grid</h4>
+                    <div class="cota-price">Cota Bronze</div>
+                    <ul class="cota-features">
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Marca no carro (lateral traseira)</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Logotipo no site e mídias sociais</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> 2 Credenciais de Box por etapa</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Menção nos agradecimentos oficiais</li>
+                        <li><i class="fa-solid fa-xmark text-red"></i> Logotipo no macacão/capacete</li>
+                        <li><i class="fa-solid fa-xmark text-red"></i> Direitos de imagem comercial</li>
+                    </ul>
+                    <a href="#contato" class="btn btn-outline btn-full select-cota" data-cota="Bronze">Solicitar Proposta</a>
+                </div>
+                
+                <!-- Master Cota -->
+                <div class="cota-card master scroll-reveal">
+                    <div class="cota-popular-tag">RECOMENDADO</div>
+                    <div class="cota-badge">Master / Black</div>
+                    <h4 class="cota-name">Patrocinador Master</h4>
+                    <div class="cota-price">Cota Master</div>
+                    <ul class="cota-features">
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Marca Master no Carro (Capô e Aerofólio)</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Posição de destaque no Macacão e Capacete</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> 10 Credenciais VIP de Box por etapa</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Dia de Pista (Co-pilotagem AMG para parceiros)</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Conteúdo dedicado de marca nas redes sociais</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Eventos corporativos com o piloto e carro</li>
+                    </ul>
+                    <a href="#contato" class="btn btn-primary btn-full select-cota" data-cota="Master">Garantir Cota Master</a>
+                </div>
+                
+                <!-- Prata Cota -->
+                <div class="cota-card prata scroll-reveal">
+                    <div class="cota-badge">Prata</div>
+                    <h4 class="cota-name">Parceiro Oficial</h4>
+                    <div class="cota-price">Cota Prata</div>
+                    <ul class="cota-features">
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Marca no carro (portas laterais)</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Logotipo no macacão (braço)</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> 5 Credenciais de Box por etapa</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Direitos de imagem para campanhas</li>
+                        <li><i class="fa-solid fa-circle-check text-green"></i> Post patrocinado bimestral</li>
+                        <li><i class="fa-solid fa-xmark text-red"></i> Logotipo no capacete</li>
+                    </ul>
+                    <a href="#contato" class="btn btn-outline btn-full select-cota" data-cota="Prata">Solicitar Proposta</a>
+                </div>
+            </div>
+            
+            <!-- Past Sponsors Block -->
+            <div class="past-sponsors scroll-reveal">
+                <h4 class="past-sponsors-title">MARCAS QUE JÁ APOIARAM A TRAJETÓRIA</h4>
+                <div class="sponsors-flex">
+                    <div class="sponsor-logo">SIL FIOS E CABOS</div>
+                    <div class="sponsor-logo">LÍDER DO BRASIL</div>
+                    <div class="sponsor-logo">FUCHS LUBRIFICANTES</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria de Fotos -->
+    <section id="galeria" class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">GALERIA MIDIA KIT</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="gallery-filters scroll-reveal">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="pista">Pista</button>
+                <button class="filter-btn" data-filter="box">Box & Paddock</button>
+            </div>
+            
+            <div class="gallery-grid scroll-reveal">
+                <!-- Img 1 -->
+                <div class="gallery-item pista" data-category="pista">
+                    <img src="assets/galeria_1.png" alt="Mercedes AMG Cup #18 na pista de Interlagos" class="gallery-img">
+                    <div class="gallery-hover">
+                        <i class="fa-solid fa-expand"></i>
+                        <span>Pista // Interlagos</span>
+                    </div>
+                </div>
+                
+                <!-- Img 2 -->
+                <div class="gallery-item box" data-category="box">
+                    <img src="assets/galeria_2.png" alt="Kauê Baroudi nos boxes da Mercedes AMG Cup" class="gallery-img">
+                    <div class="gallery-hover">
+                        <i class="fa-solid fa-expand"></i>
+                        <span>Boxes // Preparação</span>
+                    </div>
+                </div>
+                
+                <!-- Img 3 -->
+                <div class="gallery-item pista" data-category="pista">
+                    <img src="assets/galeria_3.png" alt="Ação em curva na AMG Cup Brasil" class="gallery-img">
+                    <div class="gallery-hover">
+                        <i class="fa-solid fa-expand"></i>
+                        <span>Ação // Curva do Sol</span>
+                    </div>
+                </div>
+                
+                <!-- Img 4 -->
+                <div class="gallery-item box" data-category="box">
+                    <img src="assets/galeria_4.png" alt="Kauê com troféu AMG Cup C300 2024" class="gallery-img">
+                    <div class="gallery-hover">
+                        <i class="fa-solid fa-expand"></i>
+                        <span>Troféu // Vitória 2024</span>
+                    </div>
+                </div>
+                
+                <!-- Img 5 -->
+                <div class="gallery-item pista" data-category="pista">
+                    <img src="assets/galeria_5.png" alt="Mercedes AMG Cup #18 Velocittá" class="gallery-img">
+                    <div class="gallery-hover">
+                        <i class="fa-solid fa-expand"></i>
+                        <span>Pista // Velocittá</span>
+                    </div>
+                </div>
+                
+                <!-- Img 6 -->
+                <div class="gallery-item box" data-category="box">
+                    <img src="assets/kaue_portrait.png" alt="Kauê Baroudi retrato macacão oficial" class="gallery-img">
+                    <div class="gallery-hover">
+                        <i class="fa-solid fa-expand"></i>
+                        <span>Retrato // Piloto</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog & Mídia -->
+    <section id="blog" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">MÍDIA & IMPRENSA</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Post 1 (YouTube Onboard) -->
+                <div class="blog-card scroll-reveal">
+                    <div class="blog-image-wrapper">
+                        <img src="assets/galeria_3.png" alt="Vídeo onboard AMG Cup" class="blog-img">
+                        <a href="https://www.youtube.com/@kauebaroudi" target="_blank" class="play-btn-overlay"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="fa-solid fa-calendar"></i> 2024</span>
+                            <span class="blog-badge badge-video">ONBOARD</span>
+                        </div>
+                        <h3 class="blog-title"><a href="https://www.youtube.com/@kauebaroudi" target="_blank">Volta Rápida Onboard: Interlagos // AMG Cup C300</a></h3>
+                        <p class="blog-excerpt">Assista à gravação onboard da volta de pole position de Kauê Baroudi em Interlagos. Análise técnica de traçado e telemetria pura.</p>
+                        <a href="https://www.youtube.com/@kauebaroudi" target="_blank" class="blog-link">Assistir no YouTube <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Post 2 (Título C300) -->
+                <div class="blog-card scroll-reveal">
+                    <div class="blog-image-wrapper">
+                        <img src="assets/galeria_4.png" alt="Título AMG Cup C300" class="blog-img">
+                        <span class="blog-badge badge-press">IMPRENSA</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="fa-solid fa-calendar"></i> Dezembro 2024</span>
+                            <span class="blog-badge">NEWS</span>
+                        </div>
+                        <h3 class="blog-title">Kauê Baroudi Conquista o Campeonato Geral C300 da AMG Cup Brasil</h3>
+                        <p class="blog-excerpt">Consistência ao longo de 16 etapas rendeu o título da temporada 2024 para o jovem piloto. Parceria com Fernando Baroudi foi crucial.</p>
+                        <span class="blog-link-disabled">FASP Notícias</span>
+                    </div>
+                </div>
+                
+                <!-- Post 3 (Fórmula Vee) -->
+                <div class="blog-card scroll-reveal">
+                    <div class="blog-image-wrapper">
+                        <img src="assets/kaue_portrait.png" alt="Fórmula Vee 2021" class="blog-img">
+                        <span class="blog-badge badge-history">HISTÓRICO</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="fa-solid fa-calendar"></i> Agosto 2021</span>
+                            <span class="blog-badge">REVELAÇÃO</span>
+                        </div>
+                        <h3 class="blog-title">A Ascensão Veloz de Kauê Baroudi na Fórmula Vee Júnior</h3>
+                        <p class="blog-excerpt">Matéria detalha como o piloto de Mauá despontou como grande revelação da categoria escola de monopostos do Brasil.</p>
+                        <span class="blog-link-disabled">F1 Mania</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Comercial -->
+    <section id="contato" class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CONTATO COMERCIAL</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info scroll-reveal">
+                    <h3 class="contact-subtitle">VAMOS ACELERAR JUNTOS?</h3>
+                    <p class="contact-text">Entre em contato para receber o mídia kit detalhado em PDF, agendar reuniões comerciais ou planejar visitas exclusivas aos boxes nas próximas etapas da AMG Cup Brasil.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <div class="detail-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div>
+                                <h4>WhatsApp Comercial</h4>
+                                <p><a href="https://wa.me/5511999999999" target="_blank" class="contact-link">+55 11 99999-9999</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-detail-item">
+                            <div class="detail-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <h4>E-mail Direto</h4>
+                                <p><a href="mailto:contato@kauebaroudi.com.br" class="contact-link">contato@kauebaroudi.com.br</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-detail-item">
+                            <div class="detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <h4>Base de Operações</h4>
+                                <p>Autódromo de Interlagos, São Paulo - SP / ABC Paulista</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links-container">
+                        <h4>Siga Kauê nas redes:</h4>
+                        <div class="social-flex">
+                            <a href="https://www.instagram.com/kauebaroudi" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@kauebaroudi" target="_blank" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper scroll-reveal">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="form_name">Nome / Empresa *</label>
+                            <input type="text" id="form_name" name="name" required placeholder="Digite seu nome ou nome da empresa">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form_email">E-mail *</label>
+                                <input type="email" id="form_email" name="email" required placeholder="Ex: contato@empresa.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form_phone">Telefone / WhatsApp</label>
+                                <input type="tel" id="form_phone" name="phone" placeholder="(11) 99999-9999">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="form_cota">Assunto / Cota de Interesse</label>
+                            <select id="form_cota" name="cota">
+                                <option value="Geral">Informações Gerais / Parceria</option>
+                                <option value="Bronze">Cota Bronze (Apoio de Grid)</option>
+                                <option value="Prata">Cota Prata (Parceiro Oficial)</option>
+                                <option value="Master">Cota Master / Black</option>
+                                <option value="Imprensa">Imprensa / Entrevistas</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="form_message">Mensagem *</label>
+                            <textarea id="form_message" name="message" required rows="5" placeholder="Fale sobre seu projeto de patrocínio ou proposta comercial..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full form-submit-btn">
+                            Enviar Proposta Comercial <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                        
+                        <div class="form-feedback" id="formFeedback">
+                            <div class="feedback-icon"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="feedback-text">
+                                <h4>Mensagem Enviada!</h4>
+                                <p>A equipe de assessoria de Kauê Baroudi entrará em contato em breve.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="logo">KAUÊ BAROUDI <span class="accent-slash">//</span> <span class="car-number">#18</span></a>
+                    <p class="footer-slogan">PRECISÃO, PERFORMANCE E TECNOLOGIA NAS PISTAS.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#trajetoria">Trajetória</a></li>
+                        <li><a href="#estatisticas">Estatísticas</a></li>
+                        <li><a href="#patrocinio">Patrocínio</a></li>
+                        <li><a href="#galeria">Galeria</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-legal">
+                    <h4>Legal</h4>
+                    <p>&copy; 2026 Kauê Baroudi. Todos os direitos reservados.</p>
+                    <p>Desenvolvido para Mídia Kit Oficial.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Mercedes-Benz, AMG Cup Brasil e marcas relacionadas são propriedades de seus respectivos detentores.</p>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Fechar Galeria">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Imagem Anterior">&#10094;</button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próxima Imagem">&#10095;</button>
+        
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="">
+            <div id="lightboxCaption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="index.js"></script>
+</body>
+</html>
