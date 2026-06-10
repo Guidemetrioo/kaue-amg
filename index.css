@@ -1367,11 +1367,11 @@ img, video {
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 16px;
 }
 
 .gallery-item {
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/2;
     overflow: hidden;
     clip-path: var(--cut-md);
     position: relative;
@@ -2280,10 +2280,13 @@ footer h4 {
         margin: 0 auto;
     }
     
-    /* Gallery */
+    /* Gallery - compact mosaic */
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        gap: 8px;
+    }
+    .gallery-item {
+        aspect-ratio: 1/1;
     }
     
     /* Blog */
@@ -2337,7 +2340,17 @@ footer h4 {
 
 @media (max-width: 480px) {
     .gallery-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    .gallery-item {
+        aspect-ratio: 1/1;
+    }
+    .gallery-hover span {
+        font-size: 0.65rem;
+    }
+    .gallery-hover i {
+        font-size: 1rem;
     }
     
     .logo {
