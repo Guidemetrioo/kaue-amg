@@ -552,30 +552,36 @@ img, video {
 
 .sponsor-bar-item {
     font-family: var(--font-title);
-    font-size: 1.35rem;
-    letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.18);
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.45);
     white-space: nowrap;
     display: flex;
     align-items: center;
     gap: 10px;
-    transition: color 0.3s ease;
+    transition: all 0.4s ease;
     cursor: default;
     user-select: none;
+    text-shadow: 0 0 8px rgba(0, 255, 224, 0.08);
 }
 
 .sponsor-bar-item i {
-    font-size: 0.95rem;
-    color: rgba(0, 255, 224, 0.2);
-    transition: color 0.3s ease;
+    font-size: 1.05rem;
+    color: var(--primary-cyan);
+    opacity: 0.5;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 0 4px rgba(0, 255, 224, 0.15));
 }
 
 .sponsor-bar-item:hover {
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 0 15px rgba(0, 255, 224, 0.25);
 }
 
 .sponsor-bar-item:hover i {
     color: var(--primary-cyan);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 224, 0.5));
 }
 
 @keyframes marqueeScroll {
@@ -1792,6 +1798,60 @@ img, video {
     color: var(--text-white);
     box-shadow: 0 0 10px var(--primary-cyan-glow);
     transform: translateY(-2px);
+}
+
+/* Contact CTA Card */
+.contact-cta-card {
+    background: linear-gradient(135deg, var(--card-bg-start), var(--card-bg-end));
+    border: 1px solid rgba(0, 255, 224, 0.1);
+    clip-path: var(--cut-lg);
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-cta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-cyan), var(--secondary-green), transparent);
+}
+
+.cta-content .contact-subtitle {
+    margin-bottom: 16px;
+}
+
+.cta-content .contact-text {
+    max-width: 550px;
+    margin: 0 auto 30px;
+    color: var(--text-gray);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.cta-buttons .btn {
+    gap: 8px;
+}
+
+.cta-content .social-links-container {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 24px;
+}
+
+.cta-content .social-flex {
+    justify-content: center;
 }
 
 /* Contact Form */
