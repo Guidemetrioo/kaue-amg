@@ -7,20 +7,22 @@ window.scrollTo(0, 0);
 document.addEventListener("DOMContentLoaded", () => {
     // Register GSAP plugins
     gsap.registerPlugin(ScrollTrigger);
+    
+    // Optimize ScrollTrigger resize handling on mobile viewports
+    ScrollTrigger.config({
+        ignoreMobileResize: true
+    });
 
     // Initializations
     initMobileMenu();
     initHeaderScroll();
     initScrollReveal();
     initHeroVideoScroll();
-    initBanner2VideoScroll();
-    initAboutCardVideoScroll();
     initTimelineHorizontalScroll();
     initStatsCounter();
     initGalleryAndLightbox();
     initCotaSelection();
     initContactForm();
-    initPatrocinioVideoScroll();
 });
 
 /* ==========================================================================
@@ -140,7 +142,7 @@ function initScrollReveal() {
    HERO SCROLL-SYNCED VIDEO (GSAP)
    ========================================================================== */
 function initHeroVideoScroll() {
-    const video = document.getElementById("helmet-video");
+    const video = document.getElementById("hero-video");
     const overlay = document.querySelector(".hero-dark-overlay");
     const content = document.querySelector(".hero-content");
     const heroSec = document.getElementById("hero");
@@ -149,21 +151,51 @@ function initHeroVideoScroll() {
     
     if (!video || !overlay || !content || !heroSec) return;
 
+    let tlHero;
+    let currentIsMobile = window.innerWidth <= 768;
+
+    const setVideoSource = () => {
+        const targetSrc = currentIsMobile ? "assets/banner_hero_mobile.mp4" : "assets/banner_hero_desktop.mp4";
+        let source = video.querySelector("source");
+        if (!source) {
+            source = document.createElement("source");
+            video.appendChild(source);
+        }
+        if (source.getAttribute("src") !== targetSrc) {
+            source.setAttribute("src", targetSrc);
+            video.load();
+        }
+    };
+
     const setupScrollTrigger = () => {
+        // Clear existing timeline and ScrollTrigger if active to avoid duplicates
+        if (tlHero) {
+            if (tlHero.scrollTrigger) {
+                tlHero.scrollTrigger.kill(true);
+            }
+            tlHero.kill();
+        }
+
         const duration = video.duration;
         if (!duration || isNaN(duration)) return;
         
         video.pause();
-        // INVERTED PLAYHEAD: Start with the video at the end (looking forward)
-        video.currentTime = duration - 0.05;
+        // Start with the video at the beginning
+        video.currentTime = 0;
 
         const eyebrow = content.querySelector(".hero-eyebrow");
         const nameEl = content.querySelector(".hero-name");
         const tagline = content.querySelector(".hero-tagline");
         const actions = content.querySelector(".hero-actions");
 
-        // Initial styles for text reveal slide
-        gsap.set([eyebrow, nameEl, tagline, actions], { opacity: 0, x: -100 });
+        // Initial styles for text reveal slide:
+        // On mobile, start slightly lower (y: 30) instead of off-screen left (x: -100)
+        gsap.set([eyebrow, nameEl, tagline, actions], { 
+            opacity: 0, 
+            x: currentIsMobile ? 0 : -100, 
+            y: currentIsMobile ? 30 : 0 
+        });
+        gsap.set(video, { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 1.05 });
         gsap.set(content, { opacity: 1 });
         gsap.set(overlay, { opacity: 0.1 });
         if (bannerSec) {
@@ -171,22 +203,18 @@ function initHeroVideoScroll() {
         }
 
         // Hardware-throttled low-pass video scrub render loop
-        let targetTime = duration - 0.05;
+        let targetTime = 0;
         let isUpdating = false;
+        // Smoother interpolation on mobile for better scroll-controlled video
+        const lerpFactor = currentIsMobile ? 0.3 : 0.2;
 
         function updateVideoFrame() {
             const diff = targetTime - video.currentTime;
             
-            // If the time difference is noticeable
             if (Math.abs(diff) > 0.01) {
-                // If the video is currently seeking, skip updating currentTime in this frame
-                // to prevent overloading the browser's decoding thread.
                 if (!video.seeking) {
-                    // Smoothly ease the current time towards target time (0.2 step)
-                    // This filters out seek jitters and acts as a buffer.
-                    video.currentTime = video.currentTime + diff * 0.2;
+                    video.currentTime = video.currentTime + diff * lerpFactor;
                 }
-                // Continue checking in the next animation frame
                 requestAnimationFrame(updateVideoFrame);
             } else {
                 if (!video.seeking) {
@@ -196,28 +224,24 @@ function initHeroVideoScroll() {
             }
         }
 
-        const tlHero = gsap.timeline({
+        tlHero = gsap.timeline({
             scrollTrigger: {
                 trigger: heroSec,
                 start: "top top",
                 end: "bottom bottom",
-                scrub: true,
+                scrub: currentIsMobile ? 0.5 : true,
                 pin: ".hero-sticky",
                 invalidateOnRefresh: true,
                 onUpdate: self => {
                     const progress = self.progress;
                     
-                    // REVERSED SCROLL PLAYHEAD:
-                    // At scroll = 0, targetTime = duration - 0.05 (looking forward).
-                    // As scroll progress goes down to 80%, targetTime goes to 0 (looking at camera).
                     if (progress <= 0.8) {
                         const videoProgress = progress / 0.8;
-                        targetTime = (1 - videoProgress) * (duration - 0.05);
+                        targetTime = videoProgress * (duration - 0.05);
                     } else {
-                        targetTime = 0;
+                        targetTime = duration - 0.05;
                     }
 
-                    // Launch requestAnimationFrame loop if not active
                     if (!isUpdating) {
                         isUpdating = true;
                         requestAnimationFrame(updateVideoFrame);
@@ -236,24 +260,29 @@ function initHeroVideoScroll() {
             }, 0);
         }
 
-        // 2. Video scale zoom-out from 1.05 to 1.0 (GSAP handles scale with GPU, 0 lag!)
+        // 2. Video scale zoom-out from 1.05 to 1.0
         tlHero.to(video, {
             scale: 1.0,
+            xPercent: -50,
+            yPercent: -50,
+            x: 0,
+            y: 0,
             ease: "none",
             duration: 8.0
         }, 0);
 
-        // 3. Overlay fades in from 0.1 to 0.85 from 80% to 100% progress (timeline time 8.0 to 10.0)
+        // 3. Overlay fades in from 0.1 to 0.85 from 80% to 100% progress
         tlHero.to(overlay, {
             opacity: 0.85,
             duration: 2.0,
             ease: "power2.out"
         }, 8.0);
 
-        // 4. Reveal text elements staggered from 80% to 100% progress (timeline time 8.0 to 10.0)
+        // 4. Reveal text elements staggered from 80% to 100% progress
         tlHero.to(eyebrow, {
             opacity: 1,
             x: 0,
+            y: 0,
             duration: 1.2,
             ease: "power2.out"
         }, 8.0);
@@ -261,7 +290,8 @@ function initHeroVideoScroll() {
         tlHero.to(nameEl, {
             opacity: 1,
             x: 0,
-            letterSpacing: "2px",
+            y: 0,
+            letterSpacing: currentIsMobile ? "1px" : "2px",
             duration: 1.8,
             ease: "power2.out"
         }, 8.2);
@@ -269,6 +299,7 @@ function initHeroVideoScroll() {
         tlHero.to(tagline, {
             opacity: 1,
             x: 0,
+            y: 0,
             duration: 1.5,
             ease: "power2.out"
         }, 8.5);
@@ -276,6 +307,7 @@ function initHeroVideoScroll() {
         tlHero.to(actions, {
             opacity: 1,
             x: 0,
+            y: 0,
             duration: 1.2,
             ease: "power2.out"
         }, 8.8);
@@ -290,11 +322,31 @@ function initHeroVideoScroll() {
         }
     };
 
+    // Set initial video source
+    setVideoSource();
+
     if (video.readyState >= 1) {
         setupScrollTrigger();
     } else {
         video.addEventListener("loadedmetadata", setupScrollTrigger);
     }
+
+    // Handle screen resize to swap source dynamically if boundary crossed
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile !== currentIsMobile) {
+                currentIsMobile = isMobile;
+                setVideoSource();
+                // Re-setup scroll trigger after source change
+                video.addEventListener("loadedmetadata", () => {
+                    setupScrollTrigger();
+                }, { once: true });
+            }
+        }, 250);
+    });
 }
 
 /* ==========================================================================
@@ -305,38 +357,10 @@ function initTimelineHorizontalScroll() {
     const wrapper = document.querySelector(".timeline-wrapper");
     const progress = document.querySelector(".timeline-track-progress");
     const nodes = document.querySelectorAll(".timeline-node");
-    const video = document.getElementById("trajectory-video");
 
     if (!timelineSec || !wrapper || !progress || nodes.length === 0) return;
 
-    const totalScrollWidth = Math.max(0, wrapper.scrollWidth - window.innerWidth);
-
     const setupTimeline = () => {
-        const duration = video ? video.duration : 0;
-        if (video) {
-            video.pause();
-            video.currentTime = 0;
-        }
-
-        let targetTime = 0;
-        let isUpdating = false;
-
-        function updateVideoFrame() {
-            if (!video) return;
-            const diff = targetTime - video.currentTime;
-            if (Math.abs(diff) > 0.01) {
-                if (!video.seeking) {
-                    video.currentTime = video.currentTime + diff * 0.2;
-                }
-                requestAnimationFrame(updateVideoFrame);
-            } else {
-                if (!video.seeking) {
-                    video.currentTime = targetTime;
-                }
-                isUpdating = false;
-            }
-        }
-
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: timelineSec,
@@ -345,22 +369,13 @@ function initTimelineHorizontalScroll() {
                 scrub: 0.5,
                 pin: ".trajectory-sticky",
                 pinType: "transform",
-                invalidateOnRefresh: true,
-                onUpdate: self => {
-                    if (video && duration) {
-                        targetTime = self.progress * (duration - 0.05);
-                        if (!isUpdating) {
-                            isUpdating = true;
-                            requestAnimationFrame(updateVideoFrame);
-                        }
-                    }
-                }
+                invalidateOnRefresh: true
             }
         });
 
         // 1. Move wrapper horizontally (right to left)
         tl.to(wrapper, {
-            x: () => -totalScrollWidth,
+            x: () => -Math.max(0, wrapper.scrollWidth - window.innerWidth),
             ease: "none",
             duration: 10
         }, 0);
@@ -408,15 +423,7 @@ function initTimelineHorizontalScroll() {
         });
     };
 
-    if (video) {
-        if (video.readyState >= 1) {
-            setupTimeline();
-        } else {
-            video.addEventListener("loadedmetadata", setupTimeline);
-        }
-    } else {
-        setupTimeline();
-    }
+    setupTimeline();
 }
 
 /* ==========================================================================
@@ -666,203 +673,4 @@ function initContactForm() {
     });
 }
 
-/* ==========================================================================
-   BANNER 2 SCROLL-SYNCED VIDEO (GSAP)
-   ========================================================================== */
-function initBanner2VideoScroll() {
-    const video = document.getElementById("banner2-video");
-    const bannerSec = document.getElementById("banner2");
-    const contentReveal = document.querySelector(".hero-content-reveal");
-    
-    if (!video || !bannerSec) return;
 
-    const setupScrollTrigger = () => {
-        const duration = video.duration;
-        if (!duration || isNaN(duration)) return;
-        
-        video.pause();
-        video.currentTime = 0;
-
-        // Hide main content reveal initially (it gets revealed at the end of banner 2)
-        if (contentReveal) {
-            gsap.set(contentReveal, { opacity: 0, y: 50 });
-        }
-
-        let targetTime = 0;
-        let isUpdating = false;
-
-        function updateVideoFrame() {
-            const diff = targetTime - video.currentTime;
-            if (Math.abs(diff) > 0.01) {
-                if (!video.seeking) {
-                    video.currentTime = video.currentTime + diff * 0.2;
-                }
-                requestAnimationFrame(updateVideoFrame);
-            } else {
-                if (!video.seeking) {
-                    video.currentTime = targetTime;
-                }
-                isUpdating = false;
-            }
-        }
-
-        const tlBanner2 = gsap.timeline({
-            scrollTrigger: {
-                trigger: bannerSec,
-                start: "top top",
-                end: "bottom bottom",
-                scrub: true,
-                pin: ".banner2-sticky",
-                invalidateOnRefresh: true,
-                onUpdate: self => {
-                    const progress = self.progress;
-                    
-                    if (progress <= 0.8) {
-                        const videoProgress = progress / 0.8;
-                        targetTime = videoProgress * (duration - 0.05);
-                    } else {
-                        targetTime = duration - 0.05;
-                    }
-
-                    if (!isUpdating) {
-                        isUpdating = true;
-                        requestAnimationFrame(updateVideoFrame);
-                    }
-                }
-            }
-        });
-
-        tlBanner2.to(video, {
-            scale: 1.0,
-            ease: "none",
-            duration: 8.0
-        }, 0);
-
-        if (contentReveal) {
-            tlBanner2.to(contentReveal, {
-                opacity: 1,
-                y: 0,
-                duration: 2.0,
-                ease: "power2.out"
-            }, 8.0);
-        }
-    };
-
-    if (video.readyState >= 1) {
-        setupScrollTrigger();
-    } else {
-        video.addEventListener("loadedmetadata", setupScrollTrigger);
-    }
-}
-
-/* ==========================================================================
-   ABOUT CARD SCROLL-SYNCED VIDEO (GSAP)
-   ========================================================================== */
-function initAboutCardVideoScroll() {
-    const video = document.getElementById("about-card-video");
-    const section = document.getElementById("sobre");
-    
-    if (!video || !section) return;
-
-    const setupScrollTrigger = () => {
-        const duration = video.duration;
-        if (!duration || isNaN(duration)) return;
-
-        video.pause();
-        video.currentTime = 0;
-
-        let targetTime = 0;
-        let isUpdating = false;
-
-        function updateVideoFrame() {
-            const diff = targetTime - video.currentTime;
-            if (Math.abs(diff) > 0.01) {
-                if (!video.seeking) {
-                    video.currentTime = video.currentTime + diff * 0.15;
-                }
-                requestAnimationFrame(updateVideoFrame);
-            } else {
-                if (!video.seeking) {
-                    video.currentTime = targetTime;
-                }
-                isUpdating = false;
-            }
-        }
-
-        ScrollTrigger.create({
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-            onUpdate: self => {
-                targetTime = self.progress * (duration - 0.05);
-                if (!isUpdating) {
-                    isUpdating = true;
-                    requestAnimationFrame(updateVideoFrame);
-                }
-            }
-        });
-    };
-
-    if (video.readyState >= 1) {
-        setupScrollTrigger();
-    } else {
-        video.addEventListener("loadedmetadata", setupScrollTrigger);
-    }
-}
-
-/* ==========================================================================
-   PATROCÍNIO SCROLL-SYNCED VIDEO (GSAP)
-   ========================================================================== */
-function initPatrocinioVideoScroll() {
-    const video = document.getElementById("patrocinio-video");
-    const section = document.getElementById("patrocinio");
-    
-    if (!video || !section) return;
-
-    const setupScrollTrigger = () => {
-        const duration = video.duration;
-        if (!duration || isNaN(duration)) return;
-
-        video.pause();
-        video.currentTime = 0;
-
-        let targetTime = 0;
-        let isUpdating = false;
-
-        function updateVideoFrame() {
-            const diff = targetTime - video.currentTime;
-            if (Math.abs(diff) > 0.01) {
-                if (!video.seeking) {
-                    video.currentTime = video.currentTime + diff * 0.15;
-                }
-                requestAnimationFrame(updateVideoFrame);
-            } else {
-                if (!video.seeking) {
-                    video.currentTime = targetTime;
-                }
-                isUpdating = false;
-            }
-        }
-
-        ScrollTrigger.create({
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-            onUpdate: self => {
-                targetTime = self.progress * (duration - 0.05);
-                if (!isUpdating) {
-                    isUpdating = true;
-                    requestAnimationFrame(updateVideoFrame);
-                }
-            }
-        });
-    };
-
-    if (video.readyState >= 1) {
-        setupScrollTrigger();
-    } else {
-        video.addEventListener("loadedmetadata", setupScrollTrigger);
-    }
-}

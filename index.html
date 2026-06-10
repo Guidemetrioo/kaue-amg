@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Kauê Baroudi // Piloto Profissional de Automobilismo</title>
     <meta name="description" content="Site oficial de Kauê Baroudi, piloto da AMG Cup Brasil. Conheça sua trajetória, estatísticas e oportunidades de patrocínio.">
     
@@ -48,7 +48,7 @@
     <section id="hero" class="hero-scroll-container">
         <div class="hero-sticky">
             <!-- Fixed background helmet video -->
-            <video id="helmet-video" playsinline muted preload="auto">
+            <video id="hero-video" playsinline muted preload="auto">
                 <source src="assets/banner_hero_desktop.mp4" type="video/mp4">
                 Seu navegador não suporta vídeos HTML5.
             </video>
@@ -76,18 +76,26 @@
         </div>
     </section>
 
-    <!-- Banner 2 Section -->
-    <section id="banner2" class="banner2-scroll-container">
-        <div class="banner2-sticky">
-            <video id="banner2-video" playsinline muted preload="auto">
-                <source src="assets/banner_2.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
-            </video>
-            <div class="hero-dark-overlay" style="opacity: 0.75; z-index: 2;"></div>
-            <div class="hero-watermark-cover"></div>
-            <div class="scroll-indicator">
-                <span class="scroll-text">CONTINUE ROLANDO</span>
-                <span class="scroll-arrow">↓</span>
+    <!-- Sponsors Bar -->
+    <section id="sponsors-bar" class="sponsors-bar-section">
+        <div class="sponsors-bar-container">
+            <span class="sponsors-bar-label">PATROCINADORES OFICIAIS</span>
+            <div class="sponsors-bar-track">
+                <div class="sponsors-bar-logos">
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-recycle"></i> COLOR TRASH</div>
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-gear"></i> ABECOM</div>
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-leaf"></i> REFIL</div>
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-atom"></i> NANOXD</div>
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-chart-line"></i> WRT CONSULTORIA</div>
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-flag-checkered"></i> BETO ZANINI MOTORSPORTS</div>
+                    <!-- Duplicated for infinite scroll effect -->
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-recycle"></i> COLOR TRASH</div>
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-gear"></i> ABECOM</div>
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-leaf"></i> REFIL</div>
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-atom"></i> NANOXD</div>
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-chart-line"></i> WRT CONSULTORIA</div>
+                    <div class="sponsor-bar-item"><i class="fa-solid fa-flag-checkered"></i> BETO ZANINI MOTORSPORTS</div>
+                </div>
             </div>
         </div>
     </section>
@@ -106,34 +114,11 @@
             <div class="about-grid">
                 <div class="about-image-column scroll-reveal">
                     <div class="about-img-wrapper">
-                        <video id="about-card-video" playsinline muted loop preload="auto" class="about-img">
-                            <source src="assets/card.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeos HTML5.
-                        </video>
+                        <img src="material/card.png" alt="Kauê Baroudi - Piloto AMG Cup Brasil" class="about-img" width="480" height="600" loading="lazy">
                     </div>
-                    
-                    <!-- Performance Pillars Grid -->
-                    <div class="pillars-grid">
-                        <div class="pillar-card">
-                            <div class="pillar-icon"><i class="fa-solid fa-gauge-high"></i></div>
-                            <h4 class="pillar-title">Consistência</h4>
-                            <p class="pillar-desc">Ritmo implacável em todas as voltas.</p>
-                        </div>
-                        <div class="pillar-card">
-                            <div class="pillar-icon"><i class="fa-solid fa-bullseye"></i></div>
-                            <h4 class="pillar-title">Foco</h4>
-                            <p class="pillar-desc">Concentração absoluta sob pressão.</p>
-                        </div>
-                        <div class="pillar-card">
-                            <div class="pillar-icon"><i class="fa-solid fa-dumbbell"></i></div>
-                            <h4 class="pillar-title">Evolução</h4>
-                            <p class="pillar-desc">Adaptação contínua e treino mental/físico.</p>
-                        </div>
-                        <div class="pillar-card">
-                            <div class="pillar-icon"><i class="fa-solid fa-trophy"></i></div>
-                            <h4 class="pillar-title">Resultados</h4>
-                            <p class="pillar-desc">7 vitórias e 12 pódios em uma única temporada.</p>
-                        </div>
+                    <div class="about-card-label">
+                        <h3 class="about-card-name">KAUÊ BAROUDI</h3>
+                        <span class="about-card-category">PILOTO AMG CUP BRASIL <span class="accent-slash">//</span> <span class="car-number">#18</span></span>
                     </div>
                 </div>
                 
@@ -159,11 +144,7 @@
     <!-- Linha do Tempo de Títulos -->
     <section id="trajetoria" class="timeline-scroll-container">
         <div class="trajectory-sticky">
-            <!-- Fixed background timeline video -->
-            <video id="trajectory-video" playsinline muted preload="auto">
-                <source src="assets/tec.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
-            </video>
+
             <div class="hero-dark-overlay" style="opacity: 0.75; z-index: 2;"></div>
             <div class="timeline-header-container">
                 <h2 class="section-title text-center">TRAJETÓRIA E CONQUISTAS</h2>
@@ -322,11 +303,7 @@
 
     <!-- Por que Patrocinar -->
     <section id="patrocinio" class="section-padding">
-        <!-- Background video -->
-        <video id="patrocinio-video" playsinline muted preload="auto">
-            <source src="assets/patrocinio.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos HTML5.
-        </video>
+
         <div class="hero-dark-overlay" style="opacity: 0.8; z-index: 2;"></div>
         
         <div class="container" style="position: relative; z-index: 3;">
@@ -445,7 +422,7 @@
             <div class="gallery-grid scroll-reveal">
                 <!-- Img 1 -->
                 <div class="gallery-item pista" data-category="pista">
-                    <img src="assets/galeria_1.png" alt="Mercedes AMG Cup #18 na pista de Interlagos" class="gallery-img">
+                    <img src="assets/galeria_1.png" alt="Mercedes AMG Cup #18 acelerando na reta de Interlagos" class="gallery-img">
                     <div class="gallery-hover">
                         <i class="fa-solid fa-expand"></i>
                         <span>Pista // Interlagos</span>
@@ -454,16 +431,16 @@
                 
                 <!-- Img 2 -->
                 <div class="gallery-item box" data-category="box">
-                    <img src="assets/galeria_2.png" alt="Kauê Baroudi nos boxes da Mercedes AMG Cup" class="gallery-img">
+                    <img src="assets/galeria_2.png" alt="Kauê Baroudi ao lado do AMG A45 Pro nos boxes" class="gallery-img">
                     <div class="gallery-hover">
                         <i class="fa-solid fa-expand"></i>
-                        <span>Boxes // Preparação</span>
+                        <span>Boxes // AMG A45 Pro</span>
                     </div>
                 </div>
                 
                 <!-- Img 3 -->
                 <div class="gallery-item pista" data-category="pista">
-                    <img src="assets/galeria_3.png" alt="Ação em curva na AMG Cup Brasil" class="gallery-img">
+                    <img src="assets/galeria_3.png" alt="Kauê Baroudi em curva fechada na AMG Cup Brasil" class="gallery-img">
                     <div class="gallery-hover">
                         <i class="fa-solid fa-expand"></i>
                         <span>Ação // Curva do Sol</span>
@@ -472,16 +449,16 @@
                 
                 <!-- Img 4 -->
                 <div class="gallery-item box" data-category="box">
-                    <img src="assets/galeria_4.png" alt="Kauê com troféu AMG Cup C300 2024" class="gallery-img">
+                    <img src="assets/galeria_4.png" alt="Kauê Baroudi celebrando com troféu de campeão C300 2024" class="gallery-img">
                     <div class="gallery-hover">
                         <i class="fa-solid fa-expand"></i>
-                        <span>Troféu // Vitória 2024</span>
+                        <span>Troféu // Campeão 2024</span>
                     </div>
                 </div>
                 
                 <!-- Img 5 -->
                 <div class="gallery-item pista" data-category="pista">
-                    <img src="assets/galeria_5.png" alt="Mercedes AMG Cup #18 Velocittá" class="gallery-img">
+                    <img src="assets/galeria_5.png" alt="Carro #18 Mercedes AMG acelerando no Autódromo Velocittá" class="gallery-img">
                     <div class="gallery-hover">
                         <i class="fa-solid fa-expand"></i>
                         <span>Pista // Velocittá</span>
@@ -490,10 +467,10 @@
                 
                 <!-- Img 6 -->
                 <div class="gallery-item box" data-category="box">
-                    <img src="assets/kaue_portrait.png" alt="Kauê Baroudi retrato macacão oficial" class="gallery-img">
+                    <img src="assets/kaue_portrait.png" alt="Kauê Baroudi retrato oficial com macacão de corrida" class="gallery-img">
                     <div class="gallery-hover">
                         <i class="fa-solid fa-expand"></i>
-                        <span>Retrato // Piloto</span>
+                        <span>Retrato // Piloto Oficial</span>
                     </div>
                 </div>
             </div>
@@ -509,54 +486,54 @@
             </div>
             
             <div class="blog-grid">
-                <!-- Post 1 (YouTube Onboard) -->
+                <!-- Post 1: Pai e Filho -->
                 <div class="blog-card scroll-reveal">
                     <div class="blog-image-wrapper">
-                        <img src="assets/galeria_3.png" alt="Vídeo onboard AMG Cup" class="blog-img">
-                        <a href="https://www.youtube.com/@kauebaroudi" target="_blank" class="play-btn-overlay"><i class="fa-brands fa-youtube"></i></a>
+                        <img src="material/card.png" alt="Fernando e Kauê Baroudi com troféu AMG Cup" class="blog-img">
+                        <span class="blog-badge badge-exclusive">EXCLUSIVO</span>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
-                            <span class="blog-date"><i class="fa-solid fa-calendar"></i> 2024</span>
-                            <span class="blog-badge badge-video">ONBOARD</span>
+                            <span class="blog-date"><i class="fa-solid fa-calendar"></i> Janeiro 2025</span>
+                            <span class="blog-badge badge-feature">MATÉRIA</span>
                         </div>
-                        <h3 class="blog-title"><a href="https://www.youtube.com/@kauebaroudi" target="_blank">Volta Rápida Onboard: Interlagos // AMG Cup C300</a></h3>
-                        <p class="blog-excerpt">Assista à gravação onboard da volta de pole position de Kauê Baroudi em Interlagos. Análise técnica de traçado e telemetria pura.</p>
-                        <a href="https://www.youtube.com/@kauebaroudi" target="_blank" class="blog-link">Assistir no YouTube <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <h3 class="blog-title">De Pai e Filho a Dupla Campeã: A História dos Baroudi na AMG Cup</h3>
+                        <p class="blog-excerpt">No automobilismo brasileiro, poucos laços são tão fortes quanto o de Fernando e Kauê Baroudi. O que começou como visitas ao kartódromo na infância se transformou numa parceria vitoriosa nos boxes da Mercedes AMG Cup. Fernando, que competia em motos e kart, viu no filho a mesma chama que o movia — e decidiu subir no carro ao seu lado. Juntos na C300 em 2023, conquistaram o 3º lugar geral na estreia. Em 2024, Kauê assumiu o protagonismo e trouxe o título para casa, com o pai como seu maior apoiador e parceiro estratégico de corrida. "Meu pai não me ensinou apenas a pilotar, ele me ensinou a ser competitivo com humildade", diz Kauê.</p>
+                        <span class="blog-link-disabled">Conteúdo Exclusivo // Mídia Kit</span>
                     </div>
                 </div>
                 
-                <!-- Post 2 (Título C300) -->
+                <!-- Post 2: Temporada Dominante -->
                 <div class="blog-card scroll-reveal">
                     <div class="blog-image-wrapper">
-                        <img src="assets/galeria_4.png" alt="Título AMG Cup C300" class="blog-img">
-                        <span class="blog-badge badge-press">IMPRENSA</span>
+                        <img src="assets/galeria_4.png" alt="Kauê Baroudi campeão C300 2024" class="blog-img">
+                        <span class="blog-badge badge-press">DESTAQUE</span>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span class="blog-date"><i class="fa-solid fa-calendar"></i> Dezembro 2024</span>
-                            <span class="blog-badge">NEWS</span>
+                            <span class="blog-badge">ANÁLISE</span>
                         </div>
-                        <h3 class="blog-title">Kauê Baroudi Conquista o Campeonato Geral C300 da AMG Cup Brasil</h3>
-                        <p class="blog-excerpt">Consistência ao longo de 16 etapas rendeu o título da temporada 2024 para o jovem piloto. Parceria com Fernando Baroudi foi crucial.</p>
-                        <span class="blog-link-disabled">FASP Notícias</span>
+                        <h3 class="blog-title">Campeão aos 21: Como Kauê Baroudi Dominou a Temporada 2024 da C300</h3>
+                        <p class="blog-excerpt">A temporada 2024 da AMG Cup Brasil na categoria C300 foi uma demonstração de maturidade precoce. Com 331 pontos acumulados em 16 corridas, Kauê Baroudi não apenas venceu o campeonato — ele o dominou. Foram 7 vitórias, 12 pódios, 6 pole positions e 7 voltas mais rápidas. A consistência impressionante do piloto de apenas 21 anos chamou a atenção do paddock: em nenhuma etapa ele ficou fora dos pontos. A estratégia de corrida agressiva aliada à precisão técnica herdada dos estudos em engenharia no Instituto Mauá de Tecnologia o tornaram imbatível.</p>
+                        <span class="blog-link-disabled">Velocidade no Sangue</span>
                     </div>
                 </div>
                 
-                <!-- Post 3 (Fórmula Vee) -->
+                <!-- Post 3: Engenharia e Pistas -->
                 <div class="blog-card scroll-reveal">
                     <div class="blog-image-wrapper">
-                        <img src="assets/kaue_portrait.png" alt="Fórmula Vee 2021" class="blog-img">
-                        <span class="blog-badge badge-history">HISTÓRICO</span>
+                        <img src="assets/galeria_2.png" alt="Kauê Baroudi no cockpit AMG A45 Pro" class="blog-img">
+                        <span class="blog-badge badge-history">PERFIL</span>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
-                            <span class="blog-date"><i class="fa-solid fa-calendar"></i> Agosto 2021</span>
-                            <span class="blog-badge">REVELAÇÃO</span>
+                            <span class="blog-date"><i class="fa-solid fa-calendar"></i> Março 2025</span>
+                            <span class="blog-badge">PERFIL</span>
                         </div>
-                        <h3 class="blog-title">A Ascensão Veloz de Kauê Baroudi na Fórmula Vee Júnior</h3>
-                        <p class="blog-excerpt">Matéria detalha como o piloto de Mauá despontou como grande revelação da categoria escola de monopostos do Brasil.</p>
-                        <span class="blog-link-disabled">F1 Mania</span>
+                        <h3 class="blog-title">Da Engenharia às Pistas: O Piloto que Estuda no Mauá e Corre na AMG Cup</h3>
+                        <p class="blog-excerpt">Enquanto a maioria dos jovens de sua idade foca exclusivamente na vida acadêmica ou na carreira esportiva, Kauê Baroudi faz ambos — e com excelência. Estudante do Instituto Mauá de Tecnologia, um dos centros de engenharia mais respeitados do país, ele aplica conceitos de dinâmica veicular, telemetria e análise de dados diretamente na otimização de seu desempenho nas pistas. "Estudar engenharia me fez entender o carro de uma forma que poucos pilotos conseguem", afirma. Em 2025, o salto para a categoria AMG A45 Pro representa seu maior desafio: carros com 380 HP e velocidades acima de 245 km/h exigem não apenas talento, mas conhecimento técnico profundo.</p>
+                        <span class="blog-link-disabled">Portal Dois Pontos</span>
                     </div>
                 </div>
             </div>
